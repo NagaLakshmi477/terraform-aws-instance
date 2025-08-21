@@ -9,6 +9,10 @@ variable "ami_id" {
 variable "instance_type" {
     type = string
     default = "t3.small"
+      validation {
+    condition = contains(["t3.micro","t3.small","t3.medium"],var.instance_type)
+    error_message = "valid values for ec2 instance type (t3.micro,t3.small,t3.medium)"
+  }
   
 }
 
